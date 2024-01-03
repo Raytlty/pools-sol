@@ -67,7 +67,7 @@ async function revertSnapshot(snapshotId) {
     });
 }
 
-async function deploy(contractName, constructorArgs = [], verbose = false, overrides = {}) {
+async function deploy(contractName, constructorArgs = [], verbose = true, overrides = {}) {
     let contract;
     let factory = await hre.ethers.getContractFactory(contractName);
     if (constructorArgs == []) {
@@ -80,7 +80,7 @@ async function deploy(contractName, constructorArgs = [], verbose = false, overr
     return contract;
 }
 
-async function deployBytes(contractName, abi, bytecode, verbose = false, overrides = {}) {
+async function deployBytes(contractName, abi, bytecode, verbose = true, overrides = {}) {
     const [signer] = await hre.ethers.getSigners();
     const interface = new hre.ethers.utils.Interface(abi);
     const factory = new hre.ethers.ContractFactory(interface, bytecode, signer);

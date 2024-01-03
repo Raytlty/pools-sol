@@ -8,10 +8,10 @@ const { verifyProof } = require("../lib/verifyProof");
 const utils = require("../lib/utils");
 const { poseidon } = require("../lib/poseidon");
 
-const VERIFIER_JSON = require("../circuits/out/withdraw_from_subset_verifier.json");
+const VERIFIER_JSON = require("../circuits/out/withdraw_from_subset_simple_verifier.json");
 const WASM_FNAME =
-    "./circuits/out/withdraw_from_subset_js/withdraw_from_subset.wasm";
-const ZKEY_FNAME = "./circuits/out/withdraw_from_subset_final.zkey";
+    "./circuits/out/withdraw_from_subset_simple_js/withdraw_from_subset_simple.wasm";
+const ZKEY_FNAME = "./circuits/out/withdraw_from_subset_simple_final.zkey";
 const ALLOWED = utils.getZero("allowed");
 const BLOCKED = utils.getZero("blocked");
 const ZKP_TEST_TIMEOUT = 20000; // alter if necessary.
@@ -40,7 +40,7 @@ function verifyMerkleProof({ pathElements, pathIndices, leaf, root }) {
     return leaf == root;
 }
 
-describe("withdraw_from_subset.circom (JS tests edition)", function () {
+describe("withdraw_from_subset_simple.circom (JS tests edition)", function () {
     before(async () => {
         this.proofCounter = 0;
         this.assetMetadata = hashAssetMetadata({

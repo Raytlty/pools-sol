@@ -48,6 +48,7 @@ async function main() {
         JSON.stringify(poseidonContracts, null, 4)
       );
     }
+    console.log(`Find Poseidon contract ${poseidonAddress}`)
 
     console.log(`Deploying Subset Registry`)
     const subsetRegistry = await deploy(
