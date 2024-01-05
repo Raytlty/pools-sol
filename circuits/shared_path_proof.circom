@@ -13,7 +13,6 @@ template SharedPathProof(levels, expectedValue) {
     signal input path;
     signal input mainProof[levels];
     signal input subsetProof[levels];
-
     signal output root;
     signal output subsetRoot;
 
@@ -31,7 +30,6 @@ template SharedPathProof(levels, expectedValue) {
         selectors1[i].in[0] <== i == 0 ? leaf : hashers1[i - 1].hash;
         selectors1[i].in[1] <== mainProof[i];
         selectors1[i].s <== pathBits.out[i];
-
         hashers1[i] = Hash2Nodes();
         hashers1[i].left <== selectors1[i].out[0];
         hashers1[i].right <== selectors1[i].out[1];
@@ -40,7 +38,6 @@ template SharedPathProof(levels, expectedValue) {
         selectors2[i].in[0] <== i == 0 ? expectedValue : hashers2[i - 1].hash;
         selectors2[i].in[1] <== subsetProof[i];
         selectors2[i].s <== pathBits.out[i];
-
         hashers2[i] = Hash2Nodes();
         hashers2[i].left <== selectors2[i].out[0];
         hashers2[i].right <== selectors2[i].out[1];
