@@ -6,8 +6,8 @@ require("dotenv").config()
 
 const {
     // OP_GOERLI_RPC,
-    // GOERLI_KEY,
-    // GOERLI_RPC,
+    GOERLI_KEY,
+    GOERLI_RPC,
     // OP_GOERLI_KEY,
     OP_KEY,
     ETH_KEY,
@@ -49,10 +49,10 @@ module.exports = {
         //     accounts: [ETH_KEY],
         //     url: ETH_RPC
         // },
-        // goerli: {
-        //     accounts: [GOERLI_KEY],
-        //     url: GOERLI_RPC
-        // },
+        goerli: {
+            accounts: [GOERLI_KEY],
+            url: GOERLI_RPC
+        },
     },
     paths: {
         sources: "./contracts",

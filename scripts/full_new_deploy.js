@@ -15,7 +15,7 @@ const denominations = [
 
 const { NOTE_WALLET_MNEMONIC } = process.env
 
-const NUM_INITIAL_DEPOSITS = 3
+const NUM_INITIAL_DEPOSITS = 20
 
 async function main() {
     // const gasPrice = ethers.utils.parseUnits('0.01', 9)
@@ -76,7 +76,12 @@ async function main() {
       const pool = new ethers.Contract(poolAddress, PrivacyPoolAbi, signer)
       for (const commitment of commitments) {
         console.log(commitment)
-        await pool.deposit(commitment, { value: denomination, })
+          try {
+              const tx = await pool.deposit(commitment, { value: ethers.BigNumber.from(denomination), })
+              await tx.wait()
+          } catch (e) {
+            console.log(e)
+          }
       }
     }
 
