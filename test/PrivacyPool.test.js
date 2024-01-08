@@ -189,6 +189,9 @@ describe("PrivacyPool.sol", function () {
                     const { pathElements: subsetProof, pathRoot: subsetRoot } =
                         this.emptyBlocklist.path(path);
                     // public inputs
+                    console.log(`mainProof: ${mainProof}, root: ${root}`)
+                    console.log(`subsetProof: ${subsetProof}, subsetRoot: ${subsetRoot}`)
+
                     const nullifier = poseidon([secret, 1, i]);
                     const message = utils.hashMod(
                         ["address", "address", "uint"],

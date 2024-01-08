@@ -72,4 +72,6 @@ contract SubsetRegistry {
       subsetData
     );
   }
+
+  receive() external payable {}
 }
